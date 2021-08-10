@@ -23,17 +23,16 @@ String _fromIntList(List<int> value){
 
 ${assets.map((e) {
     return """
-
 class ${e.className}{
   ${e.className}._();
 
 ${e.labels.map((e) {
       return e.generateDartField('_fromIntList', toIntList(e.value));
-    }).join('\n\n')}
+    }).join('\n')}
 }
 
 """;
-  }).join('\n\n')}
+  }).join('\n')}
 
 """
       .trim();

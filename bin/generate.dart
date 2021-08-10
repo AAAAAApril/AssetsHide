@@ -5,7 +5,6 @@ import 'dart:io';
 import 'package:april_assets_hide/src/FileUtils.dart';
 import 'package:april_assets_hide/src/Generator.dart';
 import 'package:april_assets_hide/src/PubspecConfig.dart';
-import 'package:yaml/yaml.dart' as yaml;
 
 Future<void> main(List<String> args) async {
   try {
@@ -15,17 +14,8 @@ Future<void> main(List<String> args) async {
     if (pubspecFile == null) {
       throw Exception("没找到 'pubspec.yaml' 文件");
     }
-    final config = yaml.loadYaml(
-      pubspecFile.readAsStringSync(),
-    )['april_assets_hide'];
-
-    if (config == null) {
-      stderr.writeln('未在 pubspec.yaml 中找到 april_assets_hide 节点');
-      return;
-    }
-
     await generator.generateAsync(PubspecConfig(
-      arbDir: 'lib/assets_hide/arbs',
+      jsonsDir: 'lib/assets_hide/jsons',
       outputDir: 'lib/assets_hide/outputs',
       outputFileName: 'AssetsHidden',
     ));

@@ -14,7 +14,7 @@ class Generator {
       outputDir: config.outputDir,
       outputFileName: config.outputFileName,
       content: generateAssetsDartFileContent(
-        assets: getArbFiles(config.arbDir).map<Assets>((arbFile) {
+        assets: getJsonFiles(config.jsonsDir).map<Assets>((arbFile) {
           final Map<String, dynamic> entries =
               jsonDecode(arbFile.readAsStringSync()) as Map<String, dynamic>;
           entries.removeWhere((key, value) => value is! String);
@@ -22,7 +22,10 @@ class Generator {
             className: getFileName(arbFile),
             labels: entries.entries
                 .map<Label>(
-                    (e) => Label.formMapEntry(e as MapEntry<String, String>))
+                  (e) => Label.formMapEntry(
+                    MapEntry<String, String>(e.key, e.value as String),
+                  ),
+                )
                 .toList(),
           );
         }).toList(),

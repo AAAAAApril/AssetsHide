@@ -14,13 +14,13 @@ File? getPubspecFile() {
 }
 
 ///获取映射文件列表
-List<File> getArbFiles(String arbDir) {
-  final Directory arbDirectory = Directory(path.join(
+List<File> getJsonFiles(String jsonsDir) {
+  final Directory jsonsDirectory = Directory(path.join(
     getRootDirectoryPath(),
-    arbDir,
+    jsonsDir,
   ));
-  if (arbDirectory.existsSync()) {
-    return arbDirectory
+  if (jsonsDirectory.existsSync()) {
+    return jsonsDirectory
         .listSync()
         .where((element) => element is File && element.existsSync())
         .map<File>((e) => e as File)
@@ -54,7 +54,7 @@ Future<void> output2DartFile({
     stderr.writeln('文件${outputFile.path}不存在，创建该文件');
     await outputFile.create(recursive: true);
   } else {
-    stderr.writeln('文件${outputFile.path}已存在，创建该文件');
+    stderr.writeln('文件${outputFile.path}已存在，不再创建该文件');
   }
   stderr.writeln('向文件${outputFile.path}写入数据');
   await outputFile.writeAsString(content);
