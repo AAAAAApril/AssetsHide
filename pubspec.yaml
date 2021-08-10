@@ -6,7 +6,6 @@ homepage: 'https://github.com/AAAAAApril/AssetsHide'
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
-  flutter: ">=2.0.0"
 
 dependencies:
   # https://pub.flutter-io.cn/packages/analyzer
