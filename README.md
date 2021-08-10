@@ -1,6 +1,7 @@
 # april_assets_hide
 
-A new Flutter project.
+这个工具用于隐藏源码中写死的资源文件路径
+不过从原理来说，任何固定不变的字符串都可以隐藏
 
 ## Getting Started
 
