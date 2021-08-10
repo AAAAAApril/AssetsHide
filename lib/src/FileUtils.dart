@@ -51,7 +51,11 @@ Future<void> output2DartFile({
     '$outputFileName.dart',
   ));
   if (!outputFile.existsSync()) {
+    stderr.writeln('文件${outputFile.path}不存在，创建该文件');
     await outputFile.create(recursive: true);
+  } else {
+    stderr.writeln('文件${outputFile.path}已存在，创建该文件');
   }
+  stderr.writeln('向文件${outputFile.path}写入数据');
   await outputFile.writeAsString(content);
 }

@@ -19,7 +19,10 @@ Future<void> main(List<String> args) async {
       pubspecFile.readAsStringSync(),
     )['april_assets_hide'];
 
-    if (config == null) return;
+    if (config == null) {
+      stderr.writeln('未在 pubspec.yaml 中找到 april_assets_hide 节点');
+      return;
+    }
 
     await generator.generateAsync(PubspecConfig(
       arbDir: 'lib/assets_hide/arbs',
