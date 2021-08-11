@@ -24,6 +24,7 @@ List<File> getJsonFiles(String jsonsDir) {
         .listSync()
         .where((element) => element is File && element.existsSync())
         .map<File>((e) => e as File)
+        .where((element) => getFileSuffix(element) == 'json')
         .toList();
   } else {
     return <File>[];
@@ -37,6 +38,12 @@ String getFileName(File file) {
     filePath.lastIndexOf(path.separator) + 1,
     filePath.indexOf('.'),
   );
+}
+
+///根据文件获取该文件的后缀
+String getFileSuffix(File file) {
+  final String filePath = file.path;
+  return filePath.substring(filePath.lastIndexOf('.') + 1);
 }
 
 ///把内容输出到文件

@@ -1,6 +1,6 @@
 name: april_assets_hide
 description: A new Flutter project.
-version: 1.0.0
+version: 1.0.1
 author: 'AAAAAApril'
 homepage: 'https://github.com/AAAAAApril/AssetsHide'
 
@@ -8,25 +8,11 @@ environment:
   sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
-  # https://pub.flutter-io.cn/packages/analyzer
-#  analyzer: ^1.0.4
-  # https://pub.flutter-io.cn/packages/archive
-#  archive: ^3.1.2
-  # https://pub.flutter-io.cn/packages/args
-#  args: ^2.2.0
-  # https://pub.flutter-io.cn/packages/dart_style
-#  dart_style: ^2.0.3
   # https://pub.flutter-io.cn/packages/path
   path: ^1.8.0
-  # https://pub.flutter-io.cn/packages/petitparser
-#  petitparser: ^4.0.0
   # https://pub.flutter-io.cn/packages/yaml
   yaml: ^3.1.0
 
 dev_dependencies:
   # https://pub.flutter-io.cn/packages/build_runner
   build_runner: ^2.0.4
-  # https://pub.flutter-io.cn/packages/mockito
-#  mockito: ^5.0.14
-  # https://pub.flutter-io.cn/packages/flutter_lints
-#  flutter_lints: ^1.0.4
