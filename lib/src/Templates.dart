@@ -20,7 +20,7 @@ String _fromIntList(List<int> value){
 
 ${assets.map((e) {
     return """
-    
+
 class ${e.className} {
   ${e.className}._();
 
