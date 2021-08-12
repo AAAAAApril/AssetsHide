@@ -63,7 +63,14 @@ class Label {
     List<int> transformedValue,
   ) {
     return <String>[
-      ...addition.map<String>((e) => '  /// $e'),
+      ...addition
+        ..removeWhere((element) {
+          if (element is String && element.isEmpty) {
+            return true;
+          }
+          return false;
+        })
+        ..map<String>((e) => '  /// $e'),
       '  /// ${value.value}',
       '  static late final ${value.realValueType} $name = ${value._transform("$transformFunctionName(const <int>${transformedValue})")};',
     ].join('\n');
