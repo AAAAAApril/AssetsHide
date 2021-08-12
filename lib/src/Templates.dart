@@ -25,7 +25,7 @@ class ${e.className} {
   ${e.className}._();
 
 ${e.labels.map((e) {
-      return e.generateDartField('_fromIntList', _toIntList(e.value));
+      return e.generateDartField('_fromIntList', _toIntList(e.value.stringValue));
     }).join('\n\n')}
 }
 """;
