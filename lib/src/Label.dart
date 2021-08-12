@@ -65,6 +65,6 @@ class Label {
       ...addition.map<String>((e) => '  /// $e'),
       '  /// $value',
       '  static late final String $name = $transformFunctionName(const <int>${transformedValue});',
-    ].join('\n\n');
+    ].join('\n');
   }
 }
