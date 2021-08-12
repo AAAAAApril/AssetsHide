@@ -15,19 +15,15 @@ class Generator {
       outputFileName: config.outputFileName,
       content: generateAssetsDartFileContent(
         assets: getJsonFiles(config.jsonsDir).map<Assets>((arbFile) {
-          final Map<String, dynamic> entries =
-              jsonDecode(arbFile.readAsStringSync()) as Map<String, dynamic>;
-          entries.removeWhere((key, value) => value is! String);
-          return Assets(
-            className: getFileName(arbFile),
-            labels: entries.entries
-                .map<Label>(
-                  (e) => Label.formMapEntry(
-                    MapEntry<String, String>(e.key, e.value as String),
-                  ),
-                )
-                .toList(),
-          );
+          final List<Label> labels = <Label>[];
+          for (final MapEntry entry
+              in (jsonDecode(arbFile.readAsStringSync()) as Map).entries) {
+            final Label? label = Label.formMapEntry(entry);
+            if (label != null) {
+              labels.add(label);
+            }
+          }
+          return Assets(className: getFileName(arbFile), labels: labels);
         }).toList(),
       ),
     );

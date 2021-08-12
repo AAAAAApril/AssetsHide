@@ -2,12 +2,13 @@ import 'dart:convert';
 
 import 'Assets.dart';
 
+List<int> _toIntList(String value) {
+  return utf8.encode(value).map<int>((e) => ~e).toList();
+}
+
 String generateAssetsDartFileContent({
   required List<Assets> assets,
 }) {
-  List<int> toIntList(String value) {
-    return utf8.encode(value).map<int>((e) => ~e).toList();
-  }
 
   return """
 // generated code , do not change by yourself
@@ -24,7 +25,7 @@ class ${e.className} {
   ${e.className}._();
 
 ${e.labels.map((e) {
-      return e.generateDartField('_fromIntList', toIntList(e.value));
+      return e.generateDartField('_fromIntList', _toIntList(e.value));
     }).join('\n')}
 }
 """;
