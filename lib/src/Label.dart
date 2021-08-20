@@ -1,3 +1,5 @@
+import 'ConfigKeys.dart';
+
 class Label {
   static Label? formMapEntry(MapEntry<dynamic, dynamic> entry) {
     final dynamic key = entry.key;
@@ -24,12 +26,12 @@ class Label {
       if (value.isNotEmpty) {
         //取出 key 为 value 的值，作为需要隐藏的值
         final Value? valueResult = Value.fromValue(
-          value: value['value'],
-          valueType: value['type'] as String?,
+          value: value[valueKey],
+          valueType: value[typeKey] as String?,
         );
         if (valueResult != null) {
-          value.remove('value');
-          value.remove('type');
+          value.remove(valueKey);
+          value.remove(typeKey);
           final List addition = [];
           for (final MapEntry entry in value.entries) {
             addition.add(entry.key);
