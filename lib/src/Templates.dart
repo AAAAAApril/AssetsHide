@@ -20,8 +20,8 @@ import 'dart:convert';
 String _fromIntList(List<int> value) {
   return utf8.decode(
     value
-        .map<int>((e) => ~e)
         .map<int>((e) => e + ($offset))
+        .map<int>((e) => ~e)
         .toList(),
   );
 }
@@ -29,7 +29,7 @@ String _fromIntList(List<int> value) {
 ${assets.map((e) {
     return """
 
-${e.classDescription.map((e) => '///$e').join('\n')}
+${e.classDescription.map((e) => '/// $e').join('\n')}
 class ${e.className} {
   ${e.className}._();
 
